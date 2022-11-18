@@ -1,0 +1,49 @@
+1. 
+    To download the data in the terminal/command line, I used the command:
+    curl -0 https://www.osha.gov/sites/default/files/fy17_federal-state_summaries.csv
+
+2. How many accidents are in the file?
+    To find the number of accidents I used the command 
+    wc -l fy17_federal-state_summaries.csv
+
+    And I got the answer: 577
+
+    Then I used the command
+    head -n 5 fy17_federal-state_summaries.csv
+    to check whether the first couple of rows are accidents or names the columns. It appears that the first two rows are not accidents. 
+    Thus, there is 575 accidents in the file. 
+
+3. What command would I use to show me ONLY the first line of the file?
+    To show ONLY the first line in a file, I would use the command:
+
+    head -n 1 [filename] or in this case
+    head -n 1 fy17_federal-state_summaries.csv    
+
+4. I want to know what companies were involved in falls (e.g. people falling). Can you search the file to only show falls?
+    Yes in that case I would use the command
+    grep "fall" fy17_federal-state_summaries.csv  
+    Then I only get the lines where some version of "fall" appear
+
+5. Creating a file of only 2017 accidents.
+    To create a new file that only contains the 2017 accidents I use the command
+    grep 2017 fy17_federal-state_summaries.csv > 2017accidents.csv
+
+6. How many accidents involved forklifts?
+    I use the grep -c to get the number that matches my search
+    grep -c forklift fy17_federal-state_summaries.csv
+    There has been 16 accidents involving forklifts
+
+7. How many accidents were on Christmas Eve?
+    I use the same command as in 6, but instead of forklift, I just put 12/24
+    grep -c 12/24 fy17_federal-state_summaries.csv
+    It looks like there has been 2 accidents on christmas eve
+
+8. Creating a text file of accidents that contain only trees
+    To do so, I use the command:
+    
+    grep -w 'tree\|trees' fy17_federal-state_summaries.csv > treeaccidents.txt
+
+    I use the -w to exclude cases where "tree" is included in a longer word e.g., "street". The addition 'word\|words' allows me to ask for 
+    both the singular and plural version of the word tree, which added one extra accident to the file. 
+
+    
