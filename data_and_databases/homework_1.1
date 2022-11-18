@@ -1,0 +1,893 @@
+PART ONE: WARM-UP
+
+1) Find the top 10 countries by GDP
+
+    SELECT country, gdp FROM economy ORDER BY gdp desc NULLS LAST LIMIT 10;
+
+ country |   gdp    
+ --------+----------
+ USA     | 16720000
+ CN      |  9330000
+ J       |  5007000
+ D       |  3593000
+ F       |  2739000
+ GB      |  2490000
+ BR      |  2190000
+ R       |  2113000
+ I       |  2068000
+ CDN     |  1825000￼
+
+2) Get a list of countries with the GDP below 20000
+    SELECT country, gdp FROM economy WHERE gdp < 20000;
+ 
+ country |  gdp  
+ --------+-------
+ AL      | 12800
+ MK      | 10650
+ MNE     |  4518
+ KOS     |  7150
+ AND     |  4800
+ FL      |  5113
+ BIH     | 18870
+ IS      | 14590
+ FO      |  2320
+ MC      |  5748
+ RSM     |  1866
+ M       |  9541
+ GBM     |  4076
+ MD      |  7932
+ GBZ     |  1106
+ GBG     |  2742
+ GBJ     |  5100
+ ARM     | 10440
+ GE      | 15950
+ WB      |  3700
+ GAZA    |  1700
+ TJ      |  8513
+ KG      |  7234
+ MNG     | 11140
+ MV      |  2270
+ NEP     | 19340
+ BHT     |  2133
+ K       | 15640
+ LAO     | 10100
+ BRU     | 16560
+ TL      |  6129
+ PNG     | 16100
+ SOL     |  1099
+ VU      |   828
+ NCL     |  9280
+ PAL     |   221
+ NMIS    |   733
+ GUAM    |  4600
+ FSM     |   339
+ MH      |   193
+ NAU     |   100
+ KIR     |   173
+ TUV     |    38
+ TOK     |   1.5
+ WS      |   705
+ AMSA    | 462.2
+ WF      |    60
+ FJI     |  4218
+ TO      |   477
+ NIUE    |    10
+ COOK    | 183.2
+ FPOL    |  5650
+ RMM     | 11370
+ RIM     |  4183
+ SN      | 15360
+ WAG     |   896
+ GUB     |   880
+ RG      |  6544
+ SLE     |  4607
+ LB      |  1977
+ BF      | 12130
+ RT      |  4299
+ BEN     |  8359
+ RN      |  7304
+ TCH     | 13590
+ SSD     | 11770
+ RCA     |  2050
+ GQ      | 17080
+ G       | 19970
+ RCB     | 14250
+ CGO     | 18560
+ NAM     | 12300
+ RB      | 15530
+ LS      |  2457
+ SD      |  3807
+ MOC     | 14670
+ ZW      | 10480
+ MW      |  3683
+ BI      |  2676
+ RWA     |  7700
+ SO      |  2372
+ DJI     |  1459
+ ER      |  3438
+ CV      |  1955
+ STP     |   311
+ SY      |  1271
+ COM     |   658
+ MAYO    | 953.6
+ RM      | 10530
+ MS      | 11900
+ REUN    |  2900
+ HELX    |    18
+ GL      |  2160
+ SPMI    | 215.3
+ BERM    |  5600
+ BZ      |  1637
+ HN      | 18880
+ NIC     | 11260
+ BS      |  8373
+ TUCA    |   216
+ CAYM    |  2250
+ JA      | 14390
+ RH      |  8287
+ VIRG    |  1200
+ BVI     |  1095
+ AXA     | 175.4
+ SMAR    | 561.5
+ SX      | 794.7
+ KN      |   767
+ AG      |  1220
+ MNTS    |    29
+ GUAD    |  3700
+ WD      |   495
+ MART    |  3950
+ WL      |  1377
+ BDS     |  4262
+ WV      |   742
+ WG      |   811
+ CUR     |  5600
+ ARU     |  2516
+ GUY     |  3020
+ SME     |  5009
+ FGU     |   800
+ FALK    | 164.5
+
+3) Get a list of countries sorted by the highest rates inflation
+
+    SELECT country, inflation FROM economy ORDER BY inflation desc NULLS LAST;
+
+ country | inflation 
+ --------+-----------
+ SYR     |      59.1
+ YV      |      56.2
+ IR      |      42.3
+ SUD     |        25
+ RA      |      20.8
+ BY      |        19
+ WB      |        14
+ ER      |        13
+ MH      |      12.9
+ MW      |      12.2
+ RG      |      11.9
+ YE      |      11.8
+ SLE     |      11.1
+ GH      |        11
+ BHT     |        11
+ UZ      |      10.1
+ IND     |       9.6
+ JA      |       9.4
+ BI      |       9.3
+ TM      |         9
+ ET      |         9
+ ANG     |       8.9
+ RM      |       8.8
+ STP     |       8.7
+ NGR     |       8.7
+ ZW      |       8.5
+ ETH     |       8.4
+ ROU     |       8.3
+ MNG     |       8.2
+ EAT     |       7.8
+ RI      |       7.7
+ PK      |       7.7
+ TR      |       7.6
+ BD      |       7.6
+ Z       |       7.1
+ CGO     |       7.1
+ RCA     |         7
+ AFG     |       6.8
+ R       |       6.8
+ VN      |       6.8
+ KG      |       6.8
+ NEP     |       6.7
+ BOL     |       6.5
+ LAO     |       6.5
+ RH      |       6.3
+ EAU     |       6.2
+ ARM     |       6.2
+ BR      |       6.2
+ SD      |       6.1
+ TN      |       6.1
+ RB      |       6.1
+ WAG     |         6
+ GQ      |         6
+ C       |         6
+ JOR     |       5.9
+ RWA     |       5.9
+ RSA     |       5.8
+ EAK     |       5.8
+ KZ      |       5.8
+ MYA     |       5.7
+ GAZA    |       5.7
+ NIC     |       5.7
+ CR      |       5.6
+ MACX    |       5.5
+ NAM     |       5.5
+ TT      |       5.4
+ WL      |       5.3
+ LB      |       5.2
+ HN      |       5.2
+ MV      |       5.1
+ GBM     |         5
+ RL      |         5
+ LS      |         5
+ DOM     |         5
+ CL      |       4.7
+ RIM     |       4.6
+ MD      |       4.6
+ MNTS    |       4.5
+ TL      |       4.5
+ TCH     |       4.5
+ SPMI    |       4.5
+ HK      |       4.4
+ MOC     |       4.4
+ GCA     |       4.4
+ SY      |       4.3
+ SME     |       4.2
+ PA      |       4.1
+ GUAM    |         4
+ MNE     |         4
+ SX      |         4
+ NIUE    |         4
+ MEX     |         4
+ IS      |       3.9
+ MART    |       3.9
+ DZ      |       3.9
+ GUY     |       3.9
+ PNG     |       3.8
+ TUV     |       3.8
+ GUAD    |       3.7
+ GBJ     |       3.7
+ SA      |       3.7
+ TJ      |       3.7
+ MS      |       3.5
+ GBG     |       3.4
+ EST     |       3.4
+ FSM     |       3.4
+ RO      |       3.2
+ CUR     |       3.2
+ K       |       3.2
+ LAR     |       3.2
+ AXA     |       3.1
+ BRN     |       3.1
+ Q       |       3.1
+ AG      |         3
+ FJI     |         3
+ CI      |       2.9
+ PE      |       2.9
+ GBZ     |       2.8
+ WV      |       2.8
+ RSM     |       2.8
+ KWT     |       2.8
+ RP      |       2.8
+ WF      |       2.8
+ MK      |       2.8
+ GL      |       2.8
+ PAL     |       2.7
+ WS      |       2.7
+ CN      |       2.6
+ CAM     |       2.6
+ SOL     |       2.6
+ EC      |       2.6
+ MA      |       2.5
+ NL      |       2.5
+ COM     |       2.5
+ DJI     |       2.5
+ FGU     |       2.5
+ TUCA    |       2.5
+ AZ      |       2.4
+ AUS     |       2.4
+ SGP     |       2.4
+ BEN     |       2.4
+ WG      |       2.4
+ PY      |       2.3
+ FO      |       2.3
+ HR      |       2.2
+ SRB     |       2.2
+ CO      |       2.2
+ MAL     |       2.2
+ RT      |       2.2
+ VIRG    |       2.2
+ KN      |       2.2
+ COOK    |       2.2
+ THA     |       2.2
+ SF      |       2.2
+ BDS     |       2.1
+ BF      |       2.1
+ A       |       2.1
+ IRQ     |         2
+ TO      |         2
+ GB      |         2
+ GUB     |       1.9
+ RN      |       1.9
+ H       |       1.9
+ N       |       1.9
+ CV      |       1.9
+ VU      |       1.9
+ CAYM    |       1.8
+ E       |       1.8
+ KOS     |       1.8
+ SLO     |       1.8
+ L       |       1.8
+ BERM    |       1.8
+ WD      |       1.8
+ NCL     |       1.7
+ AL      |       1.7
+ IL      |       1.7
+ SK      |       1.7
+ SSD     |       1.7
+ RCH     |       1.7
+ RCB     |       1.7
+ D       |       1.6
+ OM      |       1.6
+ BVI     |       1.6
+ BG      |       1.5
+ MC      |       1.5
+ USA     |       1.5
+ CZ      |       1.4
+ BZ      |       1.3
+ UAE     |       1.3
+ NZ      |       1.3
+ B       |       1.3
+ FALK    |       1.2
+ I       |       1.2
+ LT      |       1.2
+ G       |       1.2
+ AND     |       1.1
+ FPOL    |       1.1
+ RC      |       1.1
+ ROK     |       1.1
+ CDN     |         1
+ PL      |         1
+ M       |         1
+ BS      |         1
+ BRU     |         1
+ ES      |       0.9
+ PR      |       0.9
+ F       |       0.9
+ SN      |       0.8
+ DK      |       0.8
+ UA      |       0.7
+ IRL     |       0.6
+ P       |       0.4
+ KIR     |       0.2
+ J       |       0.2
+ BIH     |       0.2
+ LV      |       0.2
+ CY      |       0.2
+ RMM     |       0.1
+ S       |         0
+ CH      |      -0.4
+ GE      |      -0.5
+ FL      |      -0.7
+ GR      |      -0.8
+ ARU     |        -2
+ NMIS    |      -2.7
+ NAU     |      -3.6
+ REUN    |          
+ HELX    |          
+ TOK     |          
+ AMSA    |          
+ NORF    |          
+ SMAR    |          
+ COCO    |          
+ SBAR    |          
+ XMAS    |          
+ PITC    |          
+ WSA     |          
+ KP      |          
+ SVA     |          
+ SO      |          
+ MEL     |          
+ NLB     |          
+ CEU     |          
+ V       |          
+ MAYO    |          
+
+4) List all countries with the majority of their GDP coming from agriculture
+
+    SELECT country, gdp, agriculture FROM economy WHERE agriculture > 50 ORDER BY agriculture desc;
+
+ country |  gdp  | agriculture
+ --------+-------+-------------
+ FALK    | 164.5 |          95
+ LB      |  1977 |        76.9
+ SO      |  2372 |        59.3
+ GUB     |   880 |          58
+ RCA     |  2050 |        56.6
+ COM     |   658 |          51
+(6 rows)
+
+5) Create a list of countries in order of highest unemployment, and join the table with the country table so you get the names of the countries not the country code
+ 
+    SELECT country.name, economy.unemployment FROM economy JOIN country on country.code = economy.country ORDER BY unemployment desc NULLS LAST;
+               name               | unemployment 
+ ---------------------------------+--------------
+ Zimbabwe                         |           95
+ Nauru                            |           90
+ Liberia                          |           85
+ Burkina Faso                     |           77
+ Turkmenistan                     |           60
+ Djibouti                         |           59
+ Congo                            |           53
+ Senegal                          |           48
+ Nepal                            |           46
+ Bosnia and Herzegovina           |         44.3
+ Haiti                            |         40.6
+ Kenya                            |           40
+ Eswatini                         |           40
+ Marshall Islands                 |           36
+ Yemen                            |           35
+ Afghanistan                      |           35
+ Grenada                          |         33.5
+ Kosovo                           |         30.9
+ Cameroon                         |           30
+ Mauritania                       |           30
+ Mali                             |           30
+ Libya                            |           30
+ American Samoa                   |         29.8
+ North Macedonia                  |         28.6
+ Maldives                         |           28
+ Greece                           |         27.9
+ Namibia                          |         27.4
+ Spain                            |         26.3
+ Lesotho                          |           25
+ South Africa                     |         24.9
+ Nigeria                          |         23.9
+ Dominica                         |           23
+ Equatorial Guinea                |         22.3
+ Micronesia                       |           22
+ Croatia                          |         21.6
+ Gabon                            |           21
+ Cape Verde                       |           21
+ Serbia                           |         20.1
+ Sudan                            |           20
+ Saint Lucia                      |           20
+ Comoros                          |           20
+ Montenegro                       |         19.1
+ Saint Vincent and the Grenadines |         18.8
+ Timor-Leste                      |         18.4
+ Botswana                         |         17.8
+ Syria                            |         17.8
+ Ethiopia                         |         17.5
+ Cyprus                           |         17.4
+ Armenia                          |         17.3
+ Tunisia                          |         17.2
+ New Caledonia                    |         17.1
+ Mozambique                       |           17
+ Albania                          |         16.9
+ Portugal                         |         16.8
+ Jamaica                          |         16.3
+ Bahamas                          |         16.2
+ Iraq                             |           16
+ Iran                             |           16
+ Puerto Rico                      |           16
+ Belize                           |         15.5
+ Bahrain                          |           15
+ Zambia                           |           15
+ Georgia                          |           15
+ Oman                             |           15
+ Dominican Republic               |           15
+ Slovakia                         |         14.4
+ Jordan                           |           14
+ Ireland                          |         13.5
+ Egypt                            |         13.4
+ Slovenia                         |         13.1
+ Cook Islands                     |         13.1
+ Curacao                          |           13
+ Tonga                            |           13
+ Lithuania                        |         12.4
+ Italy                            |         12.4
+ Wallis and Futuna                |         12.2
+ Sint Maarten                     |           12
+ Niue                             |           12
+ French Polynesia                 |         11.7
+ Bulgaria                         |         11.6
+ Barbados                         |         11.4
+ Northern Mariana Islands         |         11.2
+ Antigua and Barbuda              |           11
+ Guyana                           |           11
+ Ghana                            |           11
+ Estonia                          |         10.9
+ Hungary                          |         10.5
+ Saudi Arabia                     |         10.5
+ Poland                           |         10.3
+ Algeria                          |         10.3
+ France                           |         10.2
+ Turks and Caicos Islands         |           10
+ Saint Pierre and Miquelon        |          9.9
+ Latvia                           |          9.8
+ Colombia                         |          9.7
+ Morocco                          |          9.5
+ Greenland                        |          9.4
+ Turkey                           |          9.3
+ Mongolia                         |            9
+ Suriname                         |            9
+ Belgium                          |          8.8
+ India                            |          8.8
+ British Virgin Islands           |          8.7
+ Kyrgyzstan                       |          8.6
+ Netherlands                      |          8.3
+ Mauritius                        |          8.3
+ Guam                             |          8.2
+ Sweden                           |          8.1
+ Finland                          |          8.1
+ Bermuda                          |            8
+ Anguilla                         |            8
+ Central African Republic         |            8
+ Ukraine                          |            8
+ Venezuela                        |          7.9
+ Costa Rica                       |          7.9
+ Fiji                             |          7.6
+ Argentina                        |          7.5
+ Philippines                      |          7.4
+ Bolivia                          |          7.4
+ United States                    |          7.3
+ Romania                          |          7.3
+ Nicaragua                        |          7.2
+ United Kingdom                   |          7.2
+ Canada                           |          7.1
+ Czech Republic                   |          7.1
+ San Marino                       |            7
+ Aruba                            |          6.9
+ Faroe Islands                    |          6.8
+ Pakistan                         |          6.6
+ Paraguay                         |          6.6
+ Indonesia                        |          6.6
+ Uruguay                          |          6.5
+ Malta                            |          6.4
+ New Zealand                      |          6.4
+ El Salvador                      |          6.3
+ Virgin Islands                   |          6.2
+ Azerbaijan                       |            6
+ Chile                            |            6
+ Montserrat                       |            6
+ Denmark                          |            6
+ Trinidad and Tobago              |          5.9
+ Moldova                          |          5.8
+ Israel                           |          5.8
+ Russia                           |          5.8
+ Australia                        |          5.7
+ Brazil                           |          5.7
+ Kazakhstan                       |          5.3
+ Germany                          |          5.3
+ Myanmar                          |          5.2
+ Sri Lanka                        |          5.1
+ Bangladesh                       |            5
+ Uzbekistan                       |          4.9
+ Mexico                           |          4.9
+ Luxembourg                       |          4.9
+ Austria                          |          4.9
+ Saint Kitts and Nevis            |          4.5
+ Honduras                         |          4.5
+ Iceland                          |          4.5
+ Panama                           |          4.5
+ Cuba                             |          4.3
+ Ecuador                          |          4.2
+ Palau                            |          4.2
+ Falkland Islands                 |          4.1
+ China                            |          4.1
+ Taiwan                           |          4.1
+ Japan                            |          4.1
+ Guatemala                        |          4.1
+ Andorra                          |            4
+ Cayman Islands                   |            4
+ Norway                           |          3.6
+ Peru                             |          3.6
+ Kuwait                           |          3.4
+ South Korea                      |          3.2
+ Switzerland                      |          3.2
+ Malaysia                         |          3.1
+ Hong Kong                        |          3.1
+ Gibraltar                        |            3
+ Brunei                           |          2.6
+ Tajikistan                       |          2.5
+ United Arab Emirates             |          2.4
+ Liechtenstein                    |          2.3
+ Bhutan                           |          2.1
+ Kiribati                         |            2
+ Seychelles                       |            2
+ Isle of Man                      |            2
+ Monaco                           |            2
+ Laos                             |          1.9
+ Singapore                        |          1.9
+ Papua New Guinea                 |          1.9
+ Macau                            |          1.8
+ Vanuatu                          |          1.7
+ Jersey                           |          1.7
+ Vietnam                          |          1.3
+ Belarus                          |            1
+ Guernsey                         |          0.9
+ Thailand                         |          0.7
+ Qatar                            |          0.3
+ Cambodia                         |            0
+ Solomon Islands                  |             
+ North Korea                      |             
+ Saint Martin                     |             
+ Saint Barthelemy                 |             
+ Guadeloupe                       |             
+ Martinique                       |             
+ Gaza Strip                       |             
+ West Bank                        |             
+ Lebanon                          |             
+ Bonaire                          |             
+ Svalbard                         |             
+ French Guiana                    |             
+ Melilla                          |             
+ Ceuta                            |             
+ Vatican City                     |             
+ Congo, Dem.Rep.                  |             
+ Angola                           |             
+ South Sudan                      |             
+ Chad                             |             
+ Niger                            |             
+ Malawi                           |             
+ Tanzania                         |             
+ Burundi                          |             
+ Rwanda                           |             
+ Uganda                           |             
+ Benin                            |             
+ Somalia                          |             
+ Togo                             |             
+ Cote d'Ivoire                    |             
+ Eritrea                          |             
+ Sierra Leone                     |             
+ Sao Tome and Principe            |             
+ Guinea                           |             
+ Mayotte                          |             
+ Madagascar                       |             
+ Guinea-Bissau                    |             
+ Reunion                          |             
+ Saint Helena                     |             
+ Gambia                           |             
+ Western Sahara                   |             
+ Pitcairn                         |             
+ Samoa                            |             
+ Tokelau                          |             
+ Tuvalu                           |             
+ Norfolk Island                   |             
+ Cocos Islands                    |             
+ Christmas Island                 |             
+
+6) Invent your own query for the economy table--as simple or as complicated as you want it to be
+
+    The 25 countries where the lowest share of the GDP comes from the service industry. Joined by the country name. 
+
+    SELECT country.name, economy.service FROM economy JOIN country on country.code = economy.country ORDER BY service asc LIMIT 25;
+
+           name           | service 
+ -------------------------+---------
+ Andorra                  |       6
+ Equatorial Guinea        |     8.1
+ Timor-Leste              |    15.8
+ Liberia                  |    17.7
+ Congo                    |    22.9
+ Nigeria                  |      26
+ Qatar                    |    27.7
+ Algeria                  |      28
+ Angola                   |    28.4
+ Brunei                   |    28.4
+ Mauritania               |    28.5
+ Guinea-Bissau            |    28.5
+ Central African Republic |    28.9
+ North Korea              |    29.4
+ Guinea                   |    30.5
+ Azerbaijan               |    30.8
+ Iraq                     |    32.1
+ Gabon                    |    32.5
+ Papua New Guinea         |    33.3
+ Sierra Leone             |    33.5
+ Somalia                  |    33.5
+ Congo, Dem.Rep.          |      34
+ Oman                     |    34.6
+ Saudi Arabia             |    35.5
+ Mali                     |      37
+
+7) List the top 15 countries by the actual dollar amount of their GDP that comes from agriculture (not the percentage but the portion of total GDP in million dollars) where the percent of the agriculture is over 25 percent
+    SELECT country.name, round(economy.gdp/100*economy.agriculture,2) FROM economy JOIN country on country.code = economy.country WHERE agriculture > 25 ORDER BY economy.gdp/100*economy.agriculture desc NULLS LAST;
+           name           |   round   
+ -------------------------+-----------
+ Nigeria                  | 155118.00
+ Pakistan                 |  59834.50
+ Myanmar                  |  22583.40
+ Ethiopia                 |  22249.80
+ Sudan                    |  14385.00
+ Kenya                    |  13275.83
+ Tanzania                 |   8815.44
+ Congo, Dem.Rep.          |   8222.08
+ Cote d'Ivoire            |   7437.64
+ Nepal                    |   7117.12
+ Chad                     |   6292.17
+ Cambodia                 |   5442.72
+ Papua New Guinea         |   4443.60
+ Mali                     |   4377.45
+ Mozambique               |   4210.29
+ Burkina Faso             |   4075.68
+ Laos                     |   3080.50
+ Madagascar               |   2874.69
+ Benin                    |   2641.44
+ Niger                    |   2571.01
+ Rwanda                   |   2456.30
+ Sierra Leone             |   2206.75
+ Liberia                  |   1520.31
+ Somalia                  |   1406.60
+ West Bank                |   1221.00
+ Togo                     |   1186.52
+ Central African Republic |   1160.30
+ Malawi                   |   1082.80
+ Burundi                  |    920.54
+ Solomon Islands          |    549.50
+ Guinea-Bissau            |    510.40
+ Comoros                  |    335.58
+ Falkland Islands         |    156.28
+
+PART TWO: AGGREGATE QUERIES
+
+1) Find the top 10 most dominant languages (highest percentage) in their respective countries
+
+    SELECT spoken.language, spoken.percentage, country.name FROM spoken JOIN country on country.code = spoken.country ORDER BY percentage desc NULLS LAST LIMIT 10;
+    language     | percentage |           name            
+ ----------------+------------+---------------------------
+ English         |        100 | Falkland Islands
+ French          |        100 | Saint Pierre and Miquelon
+ Krioulo         |        100 | Cape Verde
+ English         |        100 | Saint Helena
+ Korean          |        100 | South Korea
+ Korean          |        100 | North Korea
+ Japanese        |        100 | Japan
+ Pitcairn Creole |        100 | Pitcairn
+ English         |        100 | Isle of Man
+ Arabic          |       99.8 | Gaza Strip
+
+2) Get a list of the 10 countries with the most languages according to this database
+
+ SELECT count(language), country FROM spoken GROUP BY country ORDER BY count(language) desc NULLS LAST LIMIT 10;
+
+ count | country 
+ ------+---------
+    35 | CN
+    28 | IND
+    27 | R
+    27 | USA
+    22 | CDN
+    20 | GB
+    18 | NGR
+    16 | CAM
+    16 | EAT
+    16 | F
+
+3) Get the same list, but join the country code to the country table so you get the full names of the countries
+ SELECT country.name, count(spoken.language) FROM spoken JOIN country ON country.code = spoken.country GROUP BY country.name ORDER BY count(spoken.language) desc NULLS LAST LIMIT 10;
+
+      name      | count 
+ ---------------+-------
+ China          |    35
+ India          |    28
+ United States  |    27
+ Russia         |    27
+ Canada         |    22
+ United Kingdom |    20
+ Nigeria        |    18
+ Cameroon       |    16
+ France         |    16
+ Tanzania       |    16
+
+4) Get a list of the 10 languages that are most commonly found from country to country
+
+    SELECT language, count(country) FROM spoken GROUP BY language ORDER BY count(country) desc NULLS LAST LIMIT 10;
+  language  | count 
+ -----------+-------
+ English    |    87
+ Arabic     |    56
+ French     |    52
+ Spanish    |    41
+ German     |    26
+ Russian    |    21
+ Portuguese |    20
+ Italian    |    17
+ Turkish    |    16
+ Fulfulde   |    15
+
+5) Get a list of the 20 languages that are most commonly found from country to country
+
+    SELECT spoken.language, count(country.name), avg(percentage) FROM spoken JOIN country on country.code = spoken.country GROUP BY spoken.language ORDER BY count(spoken.country) desc NULLS LAST LIMIT 20;
+    language    | count |         avg         
+ ---------------+-------+---------------------
+ English        |    87 | 31.0479365079365079
+ Arabic         |    56 | 29.8173913043478261
+ French         |    52 | 23.7571428571428571
+ Spanish        |    41 | 53.2527777777777778
+ German         |    26 | 14.1850000000000000
+ Russian        |    21 | 16.2761904761904762
+ Portuguese     |    20 | 22.0861111111111111
+ Italian        |    17 | 16.9714285714285714
+ Turkish        |    16 |  9.1093750000000000
+ Fulfulde       |    15 | 12.7600000000000000
+ Roma           |    15 |  1.2666666666666667
+ Chinese        |    13 |  2.2615384615384615
+ Filipino       |    11 |  7.4090909090909091
+ Mandarin       |    10 | 14.7800000000000000
+ Ukrainian      |    10 |  7.6900000000000000
+ Berber         |    10 |  9.1714285714285714
+ Polish         |     9 | 12.1777777777777778
+ Urdu           |     9 |  2.2722222222222222
+ Albanian       |     9 | 25.5944444444444444
+ Serbo-Croatian |     8 | 48.1500000000000000
+
+    OR
+
+    SELECT spoken.language, count(country.name), avg(round(percentage),2) FROM spoken JOIN country on country.code = spoken.country GROUP BY spoken.language ORDER BY count(spoken.country) desc NULLS LAST LIMIT 20;
+
+    language    | count | round 
+ ---------------+-------+-------
+ English        |    87 | 31.05
+ Arabic         |    56 | 29.82
+ French         |    52 | 23.76
+ Spanish        |    41 | 53.25
+ German         |    26 | 14.19
+ Russian        |    21 | 16.28
+ Portuguese     |    20 | 22.09
+ Italian        |    17 | 16.97
+ Turkish        |    16 |  9.11
+ Fulfulde       |    15 | 12.76
+ Roma           |    15 |  1.27
+ Chinese        |    13 |  2.26
+ Filipino       |    11 |  7.41
+ Mandarin       |    10 | 14.78
+ Ukrainian      |    10 |  7.69
+ Berber         |    10 |  9.17
+ Polish         |     9 | 12.18
+ Urdu           |     9 |  2.27
+ Albanian       |     9 | 25.59
+ Serbo-Croatian |     8 | 48.15
+
+6) Get a list of the 20 languages that are most commonly found from country to country and their average percentage
+    SELECT spoken.language, count(country.name), avg(percentage) FROM spoken JOIN country on country.code = spoken.country WHERE percentage >= 21 GROUP BY spoken.language ORDER BY count(spoken.country) desc NULLS LAST LIMIT 20;
+    language    | count |         avg         
+ ---------------+-------+---------------------
+ English        |    24 | 74.1625000000000000
+ Spanish        |    21 | 85.2238095238095238
+ Arabic         |    17 | 76.8117647058823529
+ French         |    10 | 59.0800000000000000
+ Portuguese     |     5 | 65.5600000000000000
+ Russian        |     5 | 49.2400000000000000
+ Serbo-Croatian |     4 | 92.9000000000000000
+ German         |     4 | 85.4750000000000000
+ Malay          |     3 | 73.1000000000000000
+ Italian        |     3 | 70.3333333333333333
+ Fulfulde       |     3 | 25.8000000000000000
+ Dutch          |     3 | 63.3333333333333333
+ Papiamento     |     3 | 74.7666666666666667
+ Albanian       |     3 | 72.8000000000000000
+ Berber         |     2 | 27.5000000000000000
+ Romanian       |     2 | 84.8000000000000000
+ Nepali         |     2 | 37.3000000000000000
+ Cantonese      |     2 | 87.3000000000000000
+ Somali         |     2 | 76.0000000000000000
+ Mandarin       |     2 | 52.9500000000000000
+
+7) Finally, modify that last query so that you only get languages that are spoken in more than four countries, but order the results by the highest average percentage of speakers
+
+    SELECT language, count(country), avg(percentage) FROM spoken WHERE percentage >= 21 GROUP BY language HAVING count(country) > 4 ORDER BY avg(percentage) desc NULLS LAST; 
+ -----------+-------+---------------------
+ Spanish    |    21 | 85.2238095238095238
+ Arabic     |    17 | 76.8117647058823529
+ English    |    24 | 74.1625000000000000
+ Portuguese |     5 | 65.5600000000000000
+ French     |    10 | 59.0800000000000000
+ Russian    |     5 | 49.2400000000000000

@@ -1,0 +1,264 @@
+IN THE CITY TABLE
+
+1) What 10 countries have the highest population of city dwellers?
+    SELECT country.name, sum(city.population) city_population FROM city JOIN country ON city.country = country.code GROUP BY country.name ORDER BY sum(city.population) desc NULLS LAST LIMIT 10;
+     name      | city_population
+ --------------+-----------------
+ China         |       471541929
+ India         |       129752758
+ Brazil        |        93687185
+ United States |        87902890
+ Russia        |        72087283
+ Japan         |        55998885
+ Mexico        |        54207883
+ Turkey        |        53050777
+ Pakistan      |        50920843
+ Nigeria       |        49410900
+(10 rows)
+
+2) What 30 provinces have the highest population of city dwellers?
+    SELECT province, sum(population) AS population FROM city GROUP BY province ORDER BY sum(population) desc NULLS LAST LIMIT 30;
+     province     | population
+ -----------------+------------
+ Guangdong        |   75816262
+ Jiangsu          |   44238398
+ Shandong         |   33617299
+ South Korea      |   33175895
+ Zhejiang         |   31151862
+ Punjab           |   30200747
+ Maharashtra      |   28764171
+ Egypt            |   28552889
+ São Paulo        |   28456331
+ Shanghai         |   21909814
+ Henan            |   21690546
+ Sichuan          |   21477243
+ Liaoning         |   19718879
+ Beijing          |   18960744
+ Sindh            |   18154777
+ Hebei            |   17648438
+ California       |   17356178
+ Uttar Pradesh    |   16541711
+ Taiwan           |   16481172
+ Hubei            |   16097755
+ Distrito Federal |   16070474
+ İstanbul         |   15204387
+ Anhui            |   14581124
+ Lagos            |   14248636
+ Hunan            |   13931200
+ Gujarat          |   13756103
+ Rio de Janeiro   |   13215228
+ Metro Manila     |   12322336
+ Fujian           |   12198751
+ Moscow           |   11979529
+ (30 rows)
+
+
+3) Same query, but get the number of cities in each province as well.
+
+    SELECT province, sum(population) AS population, count(name) as n_cities FROM city GROUP BY province ORDER BY sum(population) desc NULLS LAST LIMIT 30;
+     province     | population | n_cities
+ -----------------+------------+----------
+ Guangdong        |   75816262 |       17
+ Jiangsu          |   44238398 |       20
+ Shandong         |   33617299 |       17
+ South Korea      |   33175895 |       23
+ Zhejiang         |   31151862 |       16
+ Punjab           |   30200747 |       24
+ Maharashtra      |   28764171 |       14
+ Egypt            |   28552889 |       28
+ São Paulo        |   28456331 |       57
+ Shanghai         |   21909814 |        1
+ Henan            |   21690546 |       16
+ Sichuan          |   21477243 |        8
+ Liaoning         |   19718879 |       10
+ Beijing          |   18960744 |        1
+ Sindh            |   18154777 |        6
+ Hebei            |   17648438 |        9
+ California       |   17356178 |       52
+ Uttar Pradesh    |   16541711 |       14
+ Taiwan           |   16481172 |       14
+ Hubei            |   16097755 |        6
+ Distrito Federal |   16070474 |        4
+ İstanbul         |   15204387 |        1
+ Anhui            |   14581124 |       10
+ Lagos            |   14248636 |        4
+ Hunan            |   13931200 |        9
+ Gujarat          |   13756103 |        8
+ Rio de Janeiro   |   13215228 |       21
+ Metro Manila     |   12322336 |       14
+ Fujian           |   12198751 |        5
+ Moscow           |   11979529 |        1
+ (30 rows)
+
+4) Same query, but only show the provinces that have more than one city.
+
+    SELECT province, sum(population) AS population, count(name) AS n_cities FROM city GROUP BY province HAVING count(name) > 1 ORDER BY sum(population) desc NULLS LAST LIMIT 30;
+     province     | population | n_cities
+ -----------------+------------+----------
+ Guangdong        |   75816262 |       17
+ Jiangsu          |   44238398 |       20
+ Shandong         |   33617299 |       17
+ South Korea      |   33175895 |       23
+ Zhejiang         |   31151862 |       16
+ Punjab           |   30200747 |       24
+ Maharashtra      |   28764171 |       14
+ Egypt            |   28552889 |       28
+ São Paulo        |   28456331 |       57
+ Henan            |   21690546 |       16
+ Sichuan          |   21477243 |        8
+ Liaoning         |   19718879 |       10
+ Sindh            |   18154777 |        6
+ Hebei            |   17648438 |        9
+ California       |   17356178 |       52
+ Uttar Pradesh    |   16541711 |       14
+ Taiwan           |   16481172 |       14
+ Hubei            |   16097755 |        6
+ Distrito Federal |   16070474 |        4
+ Anhui            |   14581124 |       10
+ Lagos            |   14248636 |        4
+ Hunan            |   13931200 |        9
+ Gujarat          |   13756103 |        8
+ Rio de Janeiro   |   13215228 |       21
+ Metro Manila     |   12322336 |       14
+ Fujian           |   12198751 |        5
+ Shaanxi          |   11782764 |        3
+ Gauteng          |   11719557 |        5
+ Texas            |   11439542 |       25
+ Thailand         |   11325984 |       11
+ (30 rows)
+
+
+5) Same query, but make sure you are only aggregating cities who's population values are not null. You can test for this by using "IS NOT NULL" (your resulting table will be slightly different than the one before.)
+
+    SELECT province, sum(population), count(name) FROM city WHERE population IS NOT NULL GROUP BY province HAVING count(name) > 1 ORDER BY sum(population) desc LIMIT 30;
+
+     province     |   sum    | count
+ -----------------+----------+-------
+ Guangdong        | 75816262 |    17
+ Jiangsu          | 44238398 |    20
+ Shandong         | 33617299 |    17
+ South Korea      | 33175895 |    23
+ Zhejiang         | 31151862 |    16
+ Punjab           | 30200747 |    24
+ Maharashtra      | 28764171 |    14
+ Egypt            | 28552889 |    28
+ São Paulo        | 28456331 |    57
+ Henan            | 21690546 |    16
+ Sichuan          | 21477243 |     8
+ Liaoning         | 19718879 |    10
+ Sindh            | 18154777 |     6
+ Hebei            | 17648438 |     9
+ California       | 17356178 |    52
+ Uttar Pradesh    | 16541711 |    14
+ Taiwan           | 16481172 |    14
+ Hubei            | 16097755 |     6
+ Distrito Federal | 16070474 |     4
+ Anhui            | 14581124 |    10
+ Lagos            | 14248636 |     4
+ Hunan            | 13931200 |     9
+ Gujarat          | 13756103 |     6
+ Rio de Janeiro   | 13215228 |    21
+ Metro Manila     | 12322336 |    14
+ Fujian           | 12198751 |     5
+ Shaanxi          | 11782764 |     3
+ Gauteng          | 11719557 |     5
+ Texas            | 11439542 |    25
+ Thailand         | 11325984 |    11
+ (30 rows)
+
+6) Which provinces exist across multiple countries. (New thing here: you need to do count(distinct ))
+
+    SELECT province, count(distinct country) AS n_country FROM city GROUP BY province HAVING count(distinct country) > 1;
+
+     province     | n_country
+ -----------------+-----------
+ Amazonas         |         4
+ Bolívar          |         2
+ Central          |         3
+ Colón            |         2
+ Córdoba          |         2
+ Distrito Federal |         4
+ Eastern          |         3
+ Georgia          |         2
+ La Paz           |         2
+ La Rioja         |         2
+ Lagos            |         2
+ Limburg          |         2
+ Luxembourg       |         2
+ North East       |         2
+ North West       |         2
+ Northern         |         3
+ Punjab           |         2
+ Santa Cruz       |         2
+ South West       |         2
+ Southern         |         2
+ Sucre            |         2
+ Western          |         3
+ (22 rows)
+
+7) Redo query 5 so that you are only counting provinces that are in the same country. (Big hint you need to GROUP BY two things!)
+
+    SELECT province, country, sum(population), count(name) FROM city WHERE population IS NOT NULL GROUP BY province, country HAVING count(name) > 1 ORDER BY sum(population) desc LIMIT 30;
+
+    province    | country |   sum    | count
+----------------+---------+----------+-------
+ Guangdong      | CN      | 75816262 |    17
+ Jiangsu        | CN      | 44238398 |    20
+ Shandong       | CN      | 33617299 |    17
+ South Korea    | ROK     | 33175895 |    23
+ Zhejiang       | CN      | 31151862 |    16
+ Maharashtra    | IND     | 28764171 |    14
+ Egypt          | ET      | 28552889 |    28
+ São Paulo      | BR      | 28456331 |    57
+ Punjab         | PK      | 26939975 |    21
+ Henan          | CN      | 21690546 |    16
+ Sichuan        | CN      | 21477243 |     8
+ Liaoning       | CN      | 19718879 |    10
+ Sindh          | PK      | 18154777 |     6
+ Hebei          | CN      | 17648438 |     9
+ California     | USA     | 17356178 |    52
+ Uttar Pradesh  | IND     | 16541711 |    14
+ Taiwan         | RC      | 16481172 |    14
+ Hubei          | CN      | 16097755 |     6
+ Anhui          | CN      | 14581124 |    10
+ Hunan          | CN      | 13931200 |     9
+ Lagos          | NGR     | 13929674 |     2
+ Gujarat        | IND     | 13756103 |     6
+ Rio de Janeiro | BR      | 13215228 |    21
+ Metro Manila   | RP      | 12322336 |    14
+ Fujian         | CN      | 12198751 |     5
+ Shaanxi        | CN      | 11782764 |     3
+ Gauteng        | RSA     | 11719557 |     5
+ Texas          | USA     | 11439542 |    25
+ Thailand       | THA     | 11325984 |    11
+ Guangxi        | CN      | 10718841 |     6
+(30 rows)
+
+BONUS QUESTION:
+
+1) Find the 20 countries with the highest number of ethnic groups along with the type of government for each of those countries.
+
+    SELECT politics.country, count(ethnicgroup.name) AS n_ethnic_groups, politics.government FROM ethnicgroup JOIN politics ON ethnicgroup.country = politics.country GROUP BY politics.country ORDER BY count(ethnicgroup.name) desc LIMIT 20;
+ country | n_ethnic_groups |                               government
+ --------+-----------------+------------------------------------------------------------------------
+ CN      |              28 | Socialist republic
+ R       |              27 | federation
+ USA     |              25 | constitution-based federal republic; strong democratic tradition
+ IND     |              20 | federal republic
+ NGR     |              17 | federal republic
+ VN      |              16 | Communist state
+ CDN     |              16 | a parliamentary democracy, a federation, and a constitutional monarchy
+ CAM     |              15 | republic; multiparty presidential regime
+ MYA     |              15 | parliamentary government took power in March 2011
+ LAO     |              15 | Communist state
+ RMM     |              14 | republic
+ EAT     |              14 | republic
+ EAK     |              13 | republic
+ CI      |              13 | republic; multiparty presidential regime established 1960
+ LB      |              13 | republic
+ THA     |              12 | constitutional monarchy
+ GH      |              12 | constitutional democracy
+ EAU     |              12 | republic
+ Z       |              11 | republic
+ PK      |              11 | federal republic
+ (20 rows)
